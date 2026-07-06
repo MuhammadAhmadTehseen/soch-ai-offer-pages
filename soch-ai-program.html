@@ -47,8 +47,10 @@
   /* nav */
   nav{position:sticky;top:0;z-index:100;background:rgba(244,243,237,.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(14,14,14,.08)}
   .nav-in{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 24px}
-  /* LOGO PLACEHOLDER: swap the wordmark for the real Soch interlocking-S logo file. */
   .wordmark{font-family:'Poppins',sans-serif;font-weight:800;color:var(--coral);font-size:24px;letter-spacing:.08em;text-decoration:none}
+  .logo-img{height:40px;display:block;mix-blend-mode:multiply}
+  .logo-tile{display:inline-block;background:var(--white);border-radius:10px;padding:10px 16px}
+  .logo-tile img{height:34px;display:block}
   .nav-links{display:flex;gap:28px;align-items:center}
   .nav-links a{color:var(--black);text-decoration:none;font-size:16px;font-weight:500}
   .nav-links a:hover{color:var(--coral)}
@@ -191,7 +193,7 @@
 
 <nav>
   <div class="nav-in">
-    <a class="wordmark" href="#top">SOCH</a>
+    <a href="#top" aria-label="Soch home"><img class="logo-img" src="assets/logo-lockup.png" alt="Soch"></a>
     <button id="hamburger" aria-label="Menu">&#9776;</button>
     <div class="nav-links" id="navlinks">
       <a href="#program">Program</a>
@@ -514,8 +516,7 @@
 <footer>
   <div class="wrap">
     <div class="col">
-      <!-- LOGO PLACEHOLDER: swap for the real Soch logo file. -->
-      <span class="wordmark">SOCH</span>
+      <span class="logo-tile"><img src="assets/logo-lockup.png" alt="Soch"></span>
       <p class="tagline">More Growth. Less Chaos.</p>
       <p style="font-size:15px;color:rgba(255,255,255,.55);margin-top:14px;max-width:280px">Venture growth partner for early-stage teams. LinkedIn growth and automations, delivered.</p>
     </div>

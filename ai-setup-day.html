@@ -48,12 +48,8 @@
   .dark .label{color:var(--coral)}
   .light .label{color:var(--black);border-bottom:3px solid var(--coral);padding-bottom:6px}
 
-  .wordmark{
-    font-family:'Poppins',sans-serif;font-weight:800;
-    color:var(--coral);font-size:26px;letter-spacing:.08em;
-  }
-  /* LOGO PLACEHOLDER: replace the .wordmark span below with the real Soch
-     interlocking-S logo file (SVG/PNG) when available. Keep it left-aligned. */
+  .logo-tile{display:inline-block;background:var(--white);border-radius:10px;padding:10px 16px}
+  .logo-tile img{height:32px;display:block}
 
   .lead{font-size:clamp(19px,1.6vw,22px);max-width:760px}
   .dark .lead{color:rgba(255,255,255,.88)}
@@ -141,7 +137,7 @@
   <!-- 1 · HERO -->
   <section class="slide dark">
     <div class="inner">
-      <div class="wordmark" style="margin-bottom:56px">SOCH</div>
+      <div style="margin-bottom:56px"><span class="logo-tile"><img src="assets/logo-lockup.png" alt="Soch"></span></div>
       <span class="label">AI Setup Day · Tallinn · Firms of 1–50 people</span>
       <h1>Your team starts using AI<br>the same day we walk in.</h1>
       <p class="lead" style="margin-top:26px">One on-site day. Claude installed on every device, connected to the Google Workspace you already run on, and your first automations working before we leave. Not a report. Not a roadmap. A result.</p>
@@ -296,7 +292,7 @@
   <!-- 8 · CTA -->
   <section class="slide dark" id="book">
     <div class="inner" style="text-align:center">
-      <div class="wordmark" style="margin-bottom:44px">SOCH</div>
+      <div style="margin-bottom:44px"><span class="logo-tile"><img src="assets/logo-lockup.png" alt="Soch"></span></div>
       <h2 style="color:var(--white)">One call. One day.<br>A firm that runs on AI.</h2>
       <p class="lead" style="margin:26px auto 0;max-width:640px">Book a 20-minute intro call. We'll look at your team and your systems and tell you honestly whether the Setup Day is worth it for your firm — and which grant fits it.</p>
       <div style="margin-top:38px">
