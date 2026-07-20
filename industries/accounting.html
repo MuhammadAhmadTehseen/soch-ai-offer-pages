@@ -67,7 +67,7 @@
       <h3>Week 1 is the same for every firm — and it's the point.</h3>
       <p>The foundation day happens on-site in Tallinn, before any industry-specific work: by the time we leave the building, every person has a working setup.</p>
       <ul>
-        <li>Claude Code installed on every machine</li>
+        <li>Claude.ai Team accounts set up for every person</li>
         <li>Gmail, Drive, Sheets &amp; Calendar connected</li>
         <li>Your firm's n8n workspace stood up</li>
         <li>Live demo on your firm's real work</li>
@@ -87,17 +87,22 @@
 
     <div class="week-module fade-up" data-delay="1">
       <span class="week-badge">WEEK 2 · DEPARTMENT BUILD LABS</span>
-      <h3>Each team builds its own assistant</h3>
-      <p>The team splits by function — bookkeeping/ops first, then onboarding/KYC, then reporting. Each track builds on your firm's real (anonymised where needed) client files:</p>
+      <h3>Each team gets a Claude Project tuned to their work</h3>
+      <p>The team splits by function — bookkeeping/ops first, then onboarding/KYC, then reporting. Each track configures a Claude Project with their firm's templates, chart of accounts, and standard email language. Labs run on your real (anonymised where needed) client files so the output can be judged against actual quality standards.</p>
       <div class="labs-grid">
-        <div class="lab-card"><b>Document intake &amp; classification</b><p>Incoming invoices, receipts and statements extracted to structured data and filed to the right client ledger sheet — accountants review exceptions instead of keying everything.</p></div>
-        <div class="lab-card"><b>Client communication desk</b><p>Claude drafting chase emails, clarification requests and onboarding replies in your tone — in Estonian, English or Russian — from the context of the client's actual file.</p></div>
-        <div class="lab-card"><b>Month-end close assistant</b><p>Close checklists per client, reconciliation exception summaries, and a first pass at the recurring monthly report pack for the accountant to verify.</p></div>
-        <div class="lab-card"><b>Onboarding &amp; KYC pack</b><p>For e-residency and international client firms: intake forms summarised, document completeness checked, and the compliance file assembled for human sign-off.</p></div>
+        <div class="lab-card"><b>Document intake &amp; extraction</b><p>Invoices, receipts and statements parsed into structured fields and written to the client ledger sheet. AI extracts and flags exceptions — the accountant reviews and posts. AI never posts entries directly.</p></div>
+        <div class="lab-card"><b>Client communication desk</b><p>Claude Project loaded with the firm's tone and client context: chase emails, clarification requests and onboarding replies drafted in Estonian, English or Russian — reviewed before sending.</p></div>
+        <div class="lab-card"><b>Meeting notes → client update</b><p>Client call notes or recordings pasted in → structured summary, open items list, and draft follow-up email. The accountant sends; Claude assembles.</p></div>
+        <div class="lab-card"><b>Onboarding &amp; KYC pack</b><p>For e-residency and international client firms: intake forms summarised, document completeness checked, compliance file assembled for human sign-off — AML rules stay with the accountant.</p></div>
       </div>
-      <div class="n8n-box">
-        <div class="n8n-label"><span class="n8n-badge">n8n</span> Automations built live in the labs</div>
-        <p>The labs build these as running n8n workflows wired to your Gmail, Drive and Sheets:</p>
+      <div class="foundation-box" style="margin-top:1.25rem">
+        <h3>On reconciliation and regulated outputs — the hard line</h3>
+        <p>AI assists; the accountant signs off. Claude can summarise ledger exceptions, flag reconciliation gaps, and draft the monthly report narrative — but it never posts entries, never certifies figures, and never produces a statutory output without a qualified accountant reviewing the numbers against source records. This rule is installed as firm policy in Week 2 and documented in the AI use policy.</p>
+        <p style="margin-top:0.75rem;color:rgba(255,255,255,0.8)">Why this matters: Claude does not have access to your accounting software in real time, cannot guarantee numeric accuracy, and can state incorrect figures with confidence. Every workflow includes a human verification step for any number that will appear in a client-facing or regulatory document.</p>
+      </div>
+      <div class="n8n-box" style="margin-top:1.25rem">
+        <div class="n8n-label"><span class="n8n-badge">n8n</span> Automations Soch delivers — your team owns</div>
+        <p>Soch arrives at Week 2 with these automations already built and tested. The labs teach your team how they work and how to modify them — no n8n expertise required:</p>
         <ul>
           <li>Inbox watcher: client email attachment → extract fields → write to client sheet → flag exceptions to the accountant</li>
           <li>Missing-documents chaser: gap detected in a client file → polite chase email drafted for one-click send</li>
