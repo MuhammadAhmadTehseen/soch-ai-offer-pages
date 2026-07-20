@@ -7,129 +7,65 @@
 <meta name="description" content="A curriculum built for partner-led Tallinn firms: first drafts from your own templates, case-file review at machine speed, and a verification protocol that keeps the lawyering with the lawyer.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{--coral:#ED5C45;--cream:#F4F3ED;--black:#0E0E0E;--white:#FFFFFF}
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{font-family:'Instrument Sans',sans-serif;font-size:19px;line-height:1.6;background:var(--cream);color:var(--black)}
-  h1,h2,h3,h4{font-family:'Poppins',sans-serif;font-weight:700;line-height:1.14}
-  h1{font-size:clamp(34px,4.6vw,52px)}
-  h2{font-size:clamp(26px,3.2vw,36px)}
-  h3{font-size:clamp(19px,2vw,24px)}
-  img{display:block;max-width:100%}
-  section{padding:88px 24px}
-  .wrap{max-width:1140px;margin:0 auto}
-  .dark{background:var(--black);color:var(--white)}
-  .light{background:var(--cream)}
-  .white-bg{background:var(--white)}
-  .kicker{font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;letter-spacing:.22em;text-transform:uppercase;display:inline-block;margin-bottom:18px}
-  .dark .kicker{color:var(--coral)}
-  .light .kicker,.white-bg .kicker{color:var(--black);border-bottom:3px solid var(--coral);padding-bottom:6px}
-  .btn{display:inline-block;background:var(--coral);color:var(--white);font-family:'Poppins',sans-serif;font-weight:600;font-size:17px;padding:15px 32px;border-radius:6px;text-decoration:none;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s}
-  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(237,92,69,.35)}
-  .btn.ghost{background:transparent;border:2px solid var(--coral);color:var(--coral)}
-  nav{position:sticky;top:0;z-index:100;background:rgba(244,243,237,.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(14,14,14,.08)}
-  .nav-in{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 24px}
-  .logo-img{height:40px;display:block;mix-blend-mode:multiply}
-  .nav-links{display:flex;gap:24px;align-items:center}
-  .nav-links a{color:var(--black);text-decoration:none;font-size:16px;font-weight:500}
-  .nav-links a:hover{color:var(--coral)}
-  .nav-links a.here{color:var(--coral);font-weight:600}
-  .nav-links .btn{font-size:15px;padding:11px 22px}
-  #hamburger{display:none;background:none;border:none;font-size:26px;cursor:pointer;color:var(--black)}
-  .hero{position:relative;background:var(--black);color:var(--white);padding:100px 24px 90px}
-  .hero .wrap{max-width:920px}
-  .hero .kicker{border:1.5px solid var(--coral);border-radius:20px;padding:8px 18px;margin-bottom:26px;color:var(--coral)}
-  .hero p.sub{font-size:clamp(19px,1.7vw,22px);color:rgba(255,255,255,.85);max-width:760px;margin-top:24px}
-  .chip{display:inline-block;font-family:'Poppins',sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;border:1.5px solid rgba(255,255,255,.35);border-radius:20px;padding:8px 18px;margin:4px 4px 0 0;color:var(--white)}
-  .hero .ctas{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap}
-  .painbox{background:var(--white);border-left:6px solid var(--coral);border-radius:10px;padding:30px 32px;font-size:18px;max-width:860px}
-  .foundation{background:var(--black);color:var(--white);border-radius:14px;padding:36px 34px;margin-top:34px}
-  .foundation h3{color:var(--coral);margin-bottom:10px}
-  .foundation p{color:rgba(255,255,255,.85);font-size:17px}
-  .foundation ul{list-style:none;margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px 24px}
-  .foundation li{padding:6px 0 6px 28px;position:relative;font-size:16px;color:rgba(255,255,255,.9)}
-  .foundation li::before{content:'';position:absolute;left:2px;top:15px;transform:rotate(-45deg);width:11px;height:6px;border-left:3px solid var(--coral);border-bottom:3px solid var(--coral)}
-  .mweek{background:var(--white);border-radius:12px;margin-top:20px;padding:32px 32px}
-  .mweek .wk{font-family:'Poppins',sans-serif;font-weight:800;font-size:14px;color:var(--white);background:var(--coral);border-radius:8px;padding:7px 13px;display:inline-block;margin-bottom:12px}
-  .mweek h3{margin-bottom:8px}
-  .mweek > p{font-size:17px;color:#444}
-  .labs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:22px}
-  .lab{background:var(--cream);border-radius:10px;padding:22px 22px}
-  .lab b{font-family:'Poppins',sans-serif;font-size:17px;display:block;margin-bottom:6px}
-  .lab p{font-size:15.5px;color:#333}
-  .n8nbox{margin-top:22px;background:var(--cream);border-radius:10px;padding:24px 26px}
-  .n8nbox .nb{font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;margin-bottom:10px}
-  .n8nbox .nb span{background:var(--black);color:var(--white);border-radius:6px;padding:3px 9px;font-size:13px;margin-right:8px}
-  .n8nbox ul{list-style:none}
-  .n8nbox li{padding:6px 0 6px 28px;position:relative;font-size:16px}
-  .n8nbox li::before{content:'';position:absolute;left:2px;top:15px;transform:rotate(-45deg);width:11px;height:6px;border-left:3px solid var(--coral);border-bottom:3px solid var(--coral)}
-  .redditcase{background:var(--white);border-radius:14px;padding:30px 30px;box-shadow:0 2px 14px rgba(14,14,14,.06);display:flex;flex-direction:column}
-  .redditcase .sub{font-family:'Poppins',sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral)}
-  .redditcase blockquote{font-size:17px;margin:14px 0;font-style:italic;border-left:4px solid var(--coral);padding-left:16px}
-  .redditcase p{font-size:15px;color:#444}
-  .redditcase a{margin-top:auto;padding-top:14px;color:var(--coral);font-weight:600;font-size:15px;text-decoration:none}
-  .redditcase a:hover{text-decoration:underline}
-  .grid{display:grid;gap:20px;margin-top:40px}
-  .g3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
-  .metricband{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:36px}
-  .metric{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:24px 22px;font-family:'Poppins',sans-serif;font-weight:600;font-size:17px;color:var(--white)}
-  .metric::before{content:'📈';display:block;margin-bottom:8px}
-  .confnote{background:var(--white);border-radius:12px;border-top:5px solid var(--coral);padding:28px 30px;margin-top:36px;font-size:17px;max-width:900px}
-  .pricecards{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;margin-top:36px}
-  .pcard{background:var(--white);border-radius:12px;padding:30px 28px;border-top:5px solid var(--coral)}
-  .pcard .pr{font-family:'Poppins',sans-serif;font-weight:800;font-size:28px;color:var(--coral)}
-  .pcard p{font-size:16px;margin-top:8px}
-  .cta-final{text-align:center}
-  .disclaimer{font-size:14px;color:#666;margin-top:22px}
-  footer{background:var(--black);color:var(--white);padding:44px 24px;text-align:center}
-  footer a{color:var(--coral);text-decoration:none}
-  footer p{font-size:15px;color:rgba(255,255,255,.6)}
-  @media (max-width:860px){
-    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--cream);flex-direction:column;padding:20px;gap:18px;border-bottom:1px solid rgba(14,14,14,.1)}
-    .nav-links.open{display:flex}
-    #hamburger{display:block}
-    section{padding:64px 20px}
-  }
-</style>
+<link rel="stylesheet" href="../assets/soch.css">
 </head>
 <body>
 
-<nav>
-  <div class="nav-in">
-    <a href="../index.html" aria-label="Soch home"><img class="logo-img" src="../assets/logo-lockup.png" alt="Soch"></a>
-    <button id="hamburger" aria-label="Menu">&#9776;</button>
-    <div class="nav-links" id="navlinks">
-      <a href="law.html" class="here">Law firms</a>
-      <a href="accounting.html">Accounting & fintech</a>
-      <a href="recruitment.html">HR & recruitment</a>
-      <a href="marketing.html">Marketing & creative</a>
-      <a href="../index.html#program">The program</a>
-      <a class="btn" href="../index.html#enquire">Book a call</a>
+<header class="site-header" id="site-header">
+  <div class="container">
+    <div class="nav-inner">
+      <a class="nav-logo" href="../index.html" aria-label="Soch home"><img src="../assets/logo-lockup.png" alt="Soch"></a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="law.html" class="active">Law firms</a>
+        <a href="accounting.html">Accounting &amp; fintech</a>
+        <a href="recruitment.html">HR &amp; recruitment</a>
+        <a href="marketing.html">Marketing &amp; creative</a>
+        <a href="../index.html#program">The program</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary" href="../index.html#enquire">Book a call</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
     </div>
   </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap">
-    <span class="kicker">Curriculum · Law firms</span>
-    <h1>Every lawyer drafting with AI.<br>Every citation still checked.</h1>
-    <p class="sub">A curriculum built for partner-led Tallinn firms: first drafts from your own templates, case-file review at machine speed, and a verification protocol that keeps the lawyering with the lawyer.</p>
-    <div style="margin-top:26px"><span class="chip">Litigation & disputes</span><span class="chip">M&A & transactions</span><span class="chip">Insolvency</span><span class="chip">ET / RU / EN drafting</span></div>
-    <div class="ctas">
-      <a class="btn" href="../index.html#enquire">Book a scoping call</a>
-      <a class="btn ghost" href="#curriculum">See the curriculum</a>
-    </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="law.html">Law firms</a>
+    <a href="accounting.html">Accounting &amp; fintech</a>
+    <a href="recruitment.html">HR &amp; recruitment</a>
+    <a href="marketing.html">Marketing &amp; creative</a>
+    <a href="../index.html#program">The program</a>
+    <a class="btn btn-primary" href="../index.html#enquire">Book a call</a>
   </div>
 </header>
 
-<section class="light">
-  <div class="wrap">
-    <span class="kicker">The problem</span>
-    <h2>Where the hours actually go</h2>
-    <div class="painbox" style="margin-top:30px">Partner hours leak into first drafts, bundle review and routine correspondence. The billable value is in judgment — but most of the week goes to production. And every AI conversation in a law firm starts (rightly) with confidentiality.</div>
-    <div class="foundation">
+<!-- HERO -->
+<section class="hero bg-forest" style="padding-top:5rem;padding-bottom:4rem">
+  <div class="container">
+    <span class="eyebrow">Curriculum · Law firms</span>
+    <h1 class="display fade-up" style="color:#fff">Every lawyer drafting with AI.<br><em class="italic" style="color:var(--brand)">Every citation still checked.</em></h1>
+    <p class="lead fade-up" data-delay="1" style="color:rgba(255,255,255,.8);margin-top:1.25rem;max-width:42rem">A curriculum built for partner-led Tallinn firms: first drafts from your own templates, case-file review at machine speed, and a verification protocol that keeps the lawyering with the lawyer.</p>
+    <div class="hero-chips fade-up" data-delay="2">
+      <span class="chip">Litigation &amp; disputes</span>
+      <span class="chip">M&amp;A &amp; transactions</span>
+      <span class="chip">Insolvency</span>
+      <span class="chip">ET / RU / EN drafting</span>
+    </div>
+    <div class="ctas fade-up" data-delay="3">
+      <a class="btn btn-primary btn-lg" href="../index.html#enquire">Book a scoping call</a>
+      <a class="btn btn-ghost-light btn-lg" href="#curriculum">See the curriculum</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="bg-mist">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">The problem</span>
+      <h2>Where the hours actually go</h2>
+    </div>
+    <div class="pain-box fade-up" data-delay="1">Partner hours leak into first drafts, bundle review and routine correspondence. The billable value is in judgment — but most of the week goes to production. And every AI conversation in a law firm starts (rightly) with confidentiality.</div>
+    <div class="foundation-box fade-up" data-delay="2">
       <h3>Week 1 is the same for every firm — and it's the point.</h3>
       <p>The foundation day happens on-site in Tallinn, before any industry-specific work: by the time we leave the building, every person has a working setup.</p>
       <ul>
@@ -144,24 +80,27 @@
   </div>
 </section>
 
-<section class="white-bg" id="curriculum">
-  <div class="wrap">
-    <span class="kicker">Curriculum — weeks 2 to 4</span>
-    <h2>Built for law firms. Run on your real work.</h2>
+<!-- CURRICULUM -->
+<section class="bg-white" id="curriculum">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Curriculum — weeks 2 to 4</span>
+      <h2>Built for law firms. Run on your real work.</h2>
+    </div>
 
-    <div class="mweek">
-      <span class="wk">WEEK 2 · DEPARTMENT BUILD LABS</span>
+    <div class="week-module fade-up" data-delay="1">
+      <span class="week-badge">WEEK 2 · DEPARTMENT BUILD LABS</span>
       <h3>Each team builds its own assistant</h3>
       <p>The firm splits into practice teams. Each team builds its own assistant on its own real matters — fully guided at first, independent by the end of the session.</p>
-      <div class="labs">
-        <div class="lab"><b>Drafting engine</b><p>Claude tuned to your templates and precedents: first-draft pleadings, contract mark-ups, engagement letters and client updates in the firm's own style — in Estonian, Russian or English.</p></div>
-        <div class="lab"><b>Document review & bundles</b><p>Case-file and due-diligence bundles summarised into issue lists, chronologies and inconsistency flags. Built on a real closed matter so the team can judge the output against work it knows.</p></div>
-        <div class="lab"><b>Research memo protocol</b><p>Research summaries with a hard rule we install as workflow, not advice: every citation independently verified before it leaves the desk. AI drafts; the lawyer confirms.</p></div>
-        <div class="lab"><b>Insolvency & repeat filings</b><p>For trustee and insolvency practices: the repetitive filing and notification paperwork templated and pre-filled, with the lawyer reviewing rather than retyping.</p></div>
+      <div class="labs-grid">
+        <div class="lab-card"><b>Drafting engine</b><p>Claude tuned to your templates and precedents: first-draft pleadings, contract mark-ups, engagement letters and client updates in the firm's own style — in Estonian, Russian or English.</p></div>
+        <div class="lab-card"><b>Document review &amp; bundles</b><p>Case-file and due-diligence bundles summarised into issue lists, chronologies and inconsistency flags. Built on a real closed matter so the team can judge the output against work it knows.</p></div>
+        <div class="lab-card"><b>Research memo protocol</b><p>Research summaries with a hard rule we install as workflow, not advice: every citation independently verified before it leaves the desk. AI drafts; the lawyer confirms.</p></div>
+        <div class="lab-card"><b>Insolvency &amp; repeat filings</b><p>For trustee and insolvency practices: the repetitive filing and notification paperwork templated and pre-filled, with the lawyer reviewing rather than retyping.</p></div>
       </div>
-      <div class="n8nbox">
-        <div class="nb"><span>n8n</span>Automations built live in the labs</div>
-        <p style="font-size:15.5px;color:#444;margin-bottom:10px">Alongside Claude on every desk, the firm leaves with working n8n automations — built in the labs, owned by a named person:</p>
+      <div class="n8n-box">
+        <div class="n8n-label"><span class="n8n-badge">n8n</span> Automations built live in the labs</div>
+        <p>Alongside Claude on every desk, the firm leaves with working n8n automations — built in the labs, owned by a named person:</p>
         <ul>
           <li>Client intake → conflict-check checklist → draft engagement letter → matter folder created in Drive</li>
           <li>Court and procedural deadlines docketed to the responsible lawyer's calendar with reminder chain</li>
@@ -171,68 +110,138 @@
       </div>
     </div>
 
-    <div class="mweek">
-      <span class="wk">WEEK 3 · REAL-WORK BRIEF</span>
+    <div class="week-module fade-up">
+      <span class="week-badge">WEEK 3 · REAL-WORK BRIEF</span>
       <h3>The week the skill becomes yours</h3>
       <p>Each lawyer takes one live deliverable — a pleading, a contract mark-up, a client memo — and produces it with the new setup during a normal work week. Time is logged before and after. The review session goes through what worked, what broke, and where the verification protocol caught something.</p>
     </div>
 
-    <div class="mweek">
-      <span class="wk">WEEK 4 · ROLLOUT &amp; DEMO DAY</span>
+    <div class="week-module fade-up">
+      <span class="week-badge">WEEK 4 · ROLLOUT &amp; DEMO DAY</span>
       <h3>Owned, measured, handed over</h3>
       <p>Each practice team demos its automation to the whole firm. Every automation gets a named owner and one metric — drafting hours per matter, turnaround on client letters — tracked from month one. Handover pack: prompts, templates, n8n workflows, and the firm's AI use policy, documented and owned in-house.</p>
     </div>
   </div>
 </section>
 
-<section class="light">
-  <div class="wrap">
-    <span class="kicker">Community evidence</span>
-    <h2>What practitioners report — in their own words</h2>
-    <p style="max-width:760px;margin-top:18px">Not our marketing — lawyers describing their own AI practice in public, on Reddit:</p>
-    <div class="grid g3">
-      <div class="redditcase"><span class="sub">r/Lawyertalk</span><blockquote>“Drafting tasks that used to take five hours can now be done in around 45 minutes… I treat AI like a highly capable junior associate: it does the initial drafting, quick research, or document breakdowns, and I verify the legal reasoning.”</blockquote><p>Counsel at a large US firm (corporate & asset finance, 10 years in practice) — also notes his group moved to fixed-fee work because AI made task time predictable.</p><a href="https://www.reddit.com/r/Lawyertalk/comments/1i5curf/ai_is_transforming_my_legal_practice/" target="_blank" rel="noopener">Read the thread &rarr;</a></div>
-      <div class="redditcase"><span class="sub">r/Lawyertalk</span><blockquote>“I had Claude proofread something for me and in addition to some good proofreading suggestions, it got a mistake in the year for one of my citations. I tested in ChatGPT and Gemini, neither of which found the problem.”</blockquote><p>A practising lawyer on Claude as a second pair of eyes — the same drafting-plus-verification pattern our Module 2 protocol installs.</p><a href="https://www.reddit.com/r/Lawyertalk/comments/1dho9mg/claude_as_proofreader_found_a_problem_with_a/" target="_blank" rel="noopener">Read the thread &rarr;</a></div>
-      <div class="redditcase"><span class="sub">r/Lawyertalk</span><blockquote>“As a lawyer I use AI a lot. Usually for a rough draft after I've given it a lot of the specifics of the case and the laws that apply. I perform the legal research for the AI and then I edit and confirm the results.”</blockquote><p>The division of labour we teach: the lawyer owns research and judgment, the AI owns the typing.</p><a href="https://www.reddit.com/r/Lawyertalk/comments/1gaqrnm/claude_is_getting_a_lot_better_but_check_those/" target="_blank" rel="noopener">Read the thread &rarr;</a></div>
+<!-- EVIDENCE -->
+<section class="bg-mist">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Community evidence</span>
+      <h2>What practitioners report — in their own words</h2>
+      <p class="lead mt-3" style="max-width:42rem">Not our marketing — lawyers describing their own AI practice in public, on Reddit:</p>
+    </div>
+    <div class="grid-3 fade-up" data-delay="1" style="margin-top:2.5rem">
+      <div class="reddit-card">
+        <span class="reddit-sub">r/Lawyertalk</span>
+        <blockquote>"Drafting tasks that used to take five hours can now be done in around 45 minutes… I treat AI like a highly capable junior associate: it does the initial drafting, quick research, or document breakdowns, and I verify the legal reasoning."</blockquote>
+        <p>Counsel at a large US firm (corporate &amp; asset finance, 10 years in practice) — also notes his group moved to fixed-fee work because AI made task time predictable.</p>
+        <a href="https://www.reddit.com/r/Lawyertalk/comments/1i5curf/ai_is_transforming_my_legal_practice/" target="_blank" rel="noopener">Read the thread &rarr;</a>
+      </div>
+      <div class="reddit-card">
+        <span class="reddit-sub">r/Lawyertalk</span>
+        <blockquote>"I had Claude proofread something for me and in addition to some good proofreading suggestions, it got a mistake in the year for one of my citations. I tested in ChatGPT and Gemini, neither of which found the problem."</blockquote>
+        <p>A practising lawyer on Claude as a second pair of eyes — the same drafting-plus-verification pattern our Module 2 protocol installs.</p>
+        <a href="https://www.reddit.com/r/Lawyertalk/comments/1dho9mg/claude_as_proofreader_found_a_problem_with_a/" target="_blank" rel="noopener">Read the thread &rarr;</a>
+      </div>
+      <div class="reddit-card">
+        <span class="reddit-sub">r/Lawyertalk</span>
+        <blockquote>"As a lawyer I use AI a lot. Usually for a rough draft after I've given it a lot of the specifics of the case and the laws that apply. I perform the legal research for the AI and then I edit and confirm the results."</blockquote>
+        <p>The division of labour we teach: the lawyer owns research and judgment, the AI owns the typing.</p>
+        <a href="https://www.reddit.com/r/Lawyertalk/comments/1gaqrnm/claude_is_getting_a_lot_better_but_check_those/" target="_blank" rel="noopener">Read the thread &rarr;</a>
+      </div>
     </div>
     <p class="disclaimer">These are public posts by independent practitioners on Reddit, quoted as community evidence — not Soch clients and not Soch results. Our own Tallinn cohort case studies will be published as they complete.</p>
-    <div class="confnote"><b>The first question, answered:</b> Confidentiality, answered up front: everything runs inside your firm's own Claude and Google Workspace accounts. Soch takes no copies of client files, and Module 1 includes a data-handling walkthrough plus a one-page AI use policy for the partners to adopt.</div>
-  </div>
-</section>
-
-<section class="dark">
-  <div class="wrap">
-    <span class="kicker">What we measure</span>
-    <h2 style="color:var(--white)">One metric per department. From month one.</h2>
-    <div class="metricband">
-      <div class="metric">Drafting hours per matter</div>
-      <div class="metric">Client-letter turnaround</div>
-      <div class="metric">Bundle review time</div>
-      <div class="metric">Citations verified — 100%, by design</div>
+    <div class="conf-note fade-up">
+      <b>The first question, answered:</b> Confidentiality, answered up front: everything runs inside your firm's own Claude and Google Workspace accounts. Soch takes no copies of client files, and Module 1 includes a data-handling walkthrough plus a one-page AI use policy for the partners to adopt.
     </div>
   </div>
 </section>
 
-<section class="white-bg cta-final">
-  <div class="wrap">
-    <span class="kicker">Pricing</span>
-    <h2>Two tracks. Flat fees. Exact number before you commit.</h2>
-    <div class="pricecards" style="text-align:left">
+<!-- METRICS -->
+<section class="bg-forest">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">What we measure</span>
+      <h2 style="color:#fff">One metric per department. From month one.</h2>
+    </div>
+    <div class="metric-band">
+      <div class="metric-box fade-up">Drafting hours per matter</div>
+      <div class="metric-box fade-up" data-delay="1">Client-letter turnaround</div>
+      <div class="metric-box fade-up" data-delay="2">Bundle review time</div>
+      <div class="metric-box fade-up" data-delay="3">Citations verified — 100%, by design</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="bg-white" style="text-align:center">
+  <div class="container">
+    <div class="section-head fade-up" style="max-width:100%">
+      <span class="eyebrow">Pricing</span>
+      <h2>Two tracks. Flat fees. Exact number before you commit.</h2>
+    </div>
+    <div class="grid-2 fade-up" data-delay="1" style="margin-top:2.5rem;text-align:left">
       <div class="pcard"><h3>AI Setup Day</h3><div class="pr">€3,500–6,000</div><p>One on-site day in Tallinn — the Week-1 foundation on its own. Firms of 1–50 people.</p></div>
       <div class="pcard"><h3>AI Capability Sprint</h3><div class="pr">€7,000–12,000</div><p>All four weeks of this curriculum — foundation day plus the law firms build labs, brief and demo day. Firms up to 100.</p></div>
     </div>
-    <p style="margin-top:26px;font-size:17px;max-width:760px;margin-left:auto;margin-right:auto">Flat, per-company pricing — no day rates, no scope creep. You get the exact figure on the scoping call, before you commit to anything.</p>
-    <a class="btn" href="../index.html#enquire" style="margin-top:30px">Book a scoping call</a>
+    <p class="fade-up" style="margin-top:1.75rem;font-size:0.96rem;color:var(--slate);max-width:46rem;margin-left:auto;margin-right:auto">Flat, per-company pricing — no day rates, no scope creep. You get the exact figure on the scoping call, before you commit to anything.</p>
+    <a class="btn btn-primary btn-lg fade-up" href="../index.html#enquire" style="margin-top:1.75rem">Book a scoping call</a>
   </div>
 </section>
 
-<footer>
-  <p><a href="../index.html">Soch — AI Adoption Program, Tallinn</a> · More Growth. Less Chaos.</p>
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-cols">
+      <div class="footer-brand">
+        <img src="../assets/logo-lockup.png" alt="Soch">
+        <p>AI adoption for professional-services firms in Tallinn. We install, connect, and coach — so your team owns the result.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Industry curricula</h4>
+        <ul>
+          <li><a href="law.html">Law firms</a></li>
+          <li><a href="accounting.html">Accounting &amp; fintech</a></li>
+          <li><a href="recruitment.html">HR &amp; recruitment</a></li>
+          <li><a href="marketing.html">Marketing &amp; creative</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Program</h4>
+        <ul>
+          <li><a href="../index.html#program">The two tracks</a></li>
+          <li><a href="../index.html#curriculum">Curriculum</a></li>
+          <li><a href="../index.html#pricing">Pricing</a></li>
+          <li><a href="../index.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="../index.html#enquire">Book a scoping call</a></li>
+          <li><a href="mailto:hello@withsoch.com">hello@withsoch.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Soch. All rights reserved.</p>
+    </div>
+  </div>
 </footer>
 
 <script>
-  const hb=document.getElementById('hamburger'),nl=document.getElementById('navlinks');
-  if(hb)hb.addEventListener('click',()=>nl.classList.toggle('open'));
+(function(){
+  var hdr=document.getElementById('site-header');
+  function s(){hdr.classList.toggle('scrolled',window.scrollY>12);}s();
+  window.addEventListener('scroll',s,{passive:true});
+  var btn=document.getElementById('hamburger'),menu=document.getElementById('mobile-menu');
+  btn.addEventListener('click',function(){var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);btn.innerHTML=o?'&#10005;':'&#9776;';});
+  menu.addEventListener('click',function(e){if(e.target.tagName==='A'){menu.classList.remove('open');btn.innerHTML='&#9776;';}});
+  var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.fade-up').forEach(function(el){io.observe(el);});
+})();
 </script>
 </body>
 </html>
