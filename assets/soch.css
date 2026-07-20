@@ -83,6 +83,16 @@ section { padding: 5rem 0; }
 .bg-forest  { background: var(--forest); }
 .bg-charcoal{ background: var(--charcoal); }
 
+/* Auto-flip text to white inside dark sections */
+.bg-forest h1, .bg-forest h2, .bg-forest h3, .bg-forest h4,
+.bg-charcoal h1, .bg-charcoal h2, .bg-charcoal h3, .bg-charcoal h4 { color: #fff; }
+.bg-forest .lead, .bg-charcoal .lead { color: rgba(255,255,255,0.78); }
+.bg-forest .chip, .bg-charcoal .chip {
+  color: rgba(255,255,255,0.88);
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.25);
+}
+
 /* ── Eyebrow tag ────────────────────────────────────────── */
 .eyebrow {
   display: inline-flex;
@@ -279,7 +289,6 @@ section { padding: 5rem 0; }
 
 /* ── Hero ───────────────────────────────────────────────── */
 .hero {
-  background: var(--mist);
   padding: 5rem 0 4.5rem;
   overflow: hidden;
 }
