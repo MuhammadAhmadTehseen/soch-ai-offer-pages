@@ -1,0 +1,157 @@
+{
+  "name": "Soch Academy — Lead Capture",
+  "nodes": [
+    {
+      "id": "b1000000-0001-0001-0001-000000000001",
+      "name": "Academy Lead Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [200, 300],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "academy-lead",
+        "responseMode": "immediately",
+        "options": {}
+      }
+    },
+    {
+      "id": "b1000000-0002-0002-0002-000000000002",
+      "name": "Capture Start Time",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [440, 140],
+      "parameters": {
+        "mode": "manual",
+        "fields": {
+          "values": [
+            { "name": "execution_start", "type": "numberValue", "value": "={{ Date.now() }}" }
+          ]
+        }
+      }
+    },
+    {
+      "id": "b1000000-0003-0003-0003-000000000003",
+      "name": "Send Ack to Submitter",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [440, 300],
+      "onError": "continueRegularOutput",
+      "credentials": {
+        "gmailOAuth2": { "id": "2ReudJzZxClQfp1R", "name": "Gmail account" }
+      },
+      "parameters": {
+        "sendTo": "={{ $('Academy Lead Webhook').first().json.body.email }}",
+        "subject": "We received your enquiry — Soch AI Program",
+        "emailType": "html",
+        "message": "=<div style=\"font-family:Inter,Arial,sans-serif;max-width:600px;margin:0 auto;color:#171814\"><div style=\"background:#103129;padding:28px 40px\"><strong style=\"color:#fff;font-size:18px\">Soch</strong></div><div style=\"padding:40px;background:#fbf8f2\"><h2 style=\"color:#103129;font-size:22px;margin:0 0 20px\">We've got your enquiry.</h2><p style=\"font-size:15px;line-height:1.7;margin:0 0 16px\">Hi {{ $('Academy Lead Webhook').first().json.body.name }},</p><p style=\"font-size:15px;line-height:1.7;margin:0 0 20px\">Thanks for reaching out about the <strong>{{ $('Academy Lead Webhook').first().json.body.track }}</strong>. We've received your details and will review them shortly.</p><div style=\"background:#fff;border-left:4px solid #ff5c35;padding:18px 22px;margin:0 0 24px;border-radius:0 6px 6px 0\"><p style=\"margin:0 0 6px;font-size:12px;color:#103129;font-weight:700;text-transform:uppercase\">What happens next</p><p style=\"margin:0;font-size:15px;line-height:1.6\">Within <strong>two business days</strong> our team will reach out with a few scoping questions.</p></div><p style=\"font-size:15px;line-height:1.7;margin:0 0 16px\">Questions? Write to <a href=\"mailto:hello@withsoch.com\" style=\"color:#ff5c35\">hello@withsoch.com</a>.</p><p style=\"font-size:15px;margin:0\">— The Soch team</p></div><div style=\"background:#103129;padding:16px 40px;text-align:center\"><p style=\"color:rgba(255,255,255,0.4);font-size:11px;margin:0\">© 2026 Soch. All rights reserved.</p></div></div>",
+        "options": { "appendAttribution": false }
+      }
+    },
+    {
+      "id": "b1000000-0004-0004-0004-000000000004",
+      "name": "Build Team Notification",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [440, 460],
+      "parameters": {
+        "mode": "manual",
+        "fields": {
+          "values": [
+            { "name": "name",     "type": "stringValue", "value": "={{ $('Academy Lead Webhook').first().json.body.name }}" },
+            { "name": "email",    "type": "stringValue", "value": "={{ $('Academy Lead Webhook').first().json.body.email }}" },
+            { "name": "company",  "type": "stringValue", "value": "={{ $('Academy Lead Webhook').first().json.body.company }}" },
+            { "name": "teamSize", "type": "stringValue", "value": "={{ $('Academy Lead Webhook').first().json.body.teamSize }}" },
+            { "name": "track",    "type": "stringValue", "value": "={{ $('Academy Lead Webhook').first().json.body.track }}" },
+            { "name": "notes",    "type": "stringValue", "value": "={{ $('Academy Lead Webhook').first().json.body.message || '—' }}" },
+            { "name": "linkedinSearchUrl", "type": "stringValue", "value": "={{ 'https://www.google.com/search?q=' + encodeURIComponent('\"' + $('Academy Lead Webhook').first().json.body.name + '\" \"' + $('Academy Lead Webhook').first().json.body.company + '\" site:linkedin.com/in') }}" },
+            { "name": "submittedAt", "type": "stringValue", "value": "={{ $now.setZone('Asia/Karachi').toFormat('cccc dd LLL yyyy, hh:mm a') + ' PKT' }}" }
+          ]
+        }
+      }
+    },
+    {
+      "id": "b1000000-0005-0005-0005-000000000005",
+      "name": "Send Team Notification",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [680, 460],
+      "onError": "continueRegularOutput",
+      "credentials": {
+        "gmailOAuth2": { "id": "2ReudJzZxClQfp1R", "name": "Gmail account" }
+      },
+      "parameters": {
+        "sendTo": "ahmad@withsoch.com",
+        "subject": "=New Academy Lead — {{ $json.company }} ({{ $json.track }})",
+        "emailType": "html",
+        "message": "=<div style=\"font-family:Inter,Arial,sans-serif;max-width:600px;margin:0 auto;color:#171814\"><div style=\"background:#103129;padding:20px 32px\"><p style=\"color:#ff5c35;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 4px\">Soch Academy</p><h2 style=\"color:#fff;font-size:20px;margin:0\">New Lead: {{ $json.company }}</h2></div><div style=\"padding:32px;background:#f9f9f7\"><table style=\"width:100%;border-collapse:collapse;font-size:14px\"><tr style=\"border-bottom:1px solid #e5e2db\"><td style=\"padding:10px 0;color:#666;width:110px\">Name</td><td style=\"padding:10px 0;font-weight:600\">{{ $json.name }}</td></tr><tr style=\"border-bottom:1px solid #e5e2db\"><td style=\"padding:10px 0;color:#666\">Email</td><td style=\"padding:10px 0\"><a href=\"mailto:{{ $json.email }}\" style=\"color:#ff5c35\">{{ $json.email }}</a></td></tr><tr style=\"border-bottom:1px solid #e5e2db\"><td style=\"padding:10px 0;color:#666\">Company</td><td style=\"padding:10px 0;font-weight:600\">{{ $json.company }}</td></tr><tr style=\"border-bottom:1px solid #e5e2db\"><td style=\"padding:10px 0;color:#666\">Team size</td><td style=\"padding:10px 0\">{{ $json.teamSize }}</td></tr><tr style=\"border-bottom:1px solid #e5e2db\"><td style=\"padding:10px 0;color:#666\">Track</td><td style=\"padding:10px 0\">{{ $json.track }}</td></tr><tr style=\"border-bottom:1px solid #e5e2db\"><td style=\"padding:10px 0;color:#666\">Notes</td><td style=\"padding:10px 0\">{{ $json.notes }}</td></tr><tr><td style=\"padding:10px 0;color:#666\">Submitted</td><td style=\"padding:10px 0\">{{ $json.submittedAt }}</td></tr></table><div style=\"margin:24px 0 0;padding:16px 20px;background:#fff;border-radius:6px;border:1px solid #e5e2db\"><p style=\"margin:0 0 8px;font-size:11px;font-weight:700;text-transform:uppercase;color:#103129\">LinkedIn Search</p><a href=\"{{ $json.linkedinSearchUrl }}\" style=\"color:#ff5c35;font-size:14px\">Search Google for their LinkedIn →</a></div></div><div style=\"background:#103129;padding:14px 32px;text-align:center\"><p style=\"color:rgba(255,255,255,0.4);font-size:11px;margin:0\">Soch Academy Lead Capture · auto-generated</p></div></div>",
+        "options": { "appendAttribution": false }
+      }
+    },
+    {
+      "id": "b1000000-0006-0006-0006-000000000006",
+      "name": "Build Execution Telemetry",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [920, 460],
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "jsCode": "const startTime = $('Capture Start Time').first().json.execution_start;\nconst now = Date.now();\nreturn [{ json: {\n  log_type: 'execution',\n  workflow_name: 'Soch Academy — Lead Capture',\n  workflow_id: $workflow.id,\n  execution_id: $execution.id,\n  status: 'success',\n  started_at: new Date(startTime).toISOString(),\n  finished_at: new Date(now).toISOString(),\n  duration_ms: now - startTime,\n  execution_url: 'https://sochconsulting.app.n8n.cloud/workflow/' + $workflow.id + '/executions/' + $execution.id\n}}];"
+      }
+    },
+    {
+      "id": "b1000000-0007-0007-0007-000000000007",
+      "name": "Soch Ops Telemetry",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1160, 460],
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "method": "POST",
+        "url": "https://script.google.com/macros/s/AKfycbyNL_efegD34j44pUh_W2fUUEDpx3Yk0WNYN0Y2ayA6MMRHq9ZmeyKC5LhenTvCQWK4Ag/exec",
+        "sendBody": true,
+        "specifyBody": "keypair",
+        "bodyParameters": {
+          "parameters": [
+            { "name": "log_type",      "value": "={{ $json.log_type }}" },
+            { "name": "workflow_name", "value": "={{ $json.workflow_name }}" },
+            { "name": "workflow_id",   "value": "={{ $json.workflow_id }}" },
+            { "name": "execution_id",  "value": "={{ $json.execution_id }}" },
+            { "name": "status",        "value": "={{ $json.status }}" },
+            { "name": "started_at",    "value": "={{ $json.started_at }}" },
+            { "name": "finished_at",   "value": "={{ $json.finished_at }}" },
+            { "name": "duration_ms",   "value": "={{ $json.duration_ms }}" },
+            { "name": "execution_url", "value": "={{ $json.execution_url }}" }
+          ]
+        },
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Academy Lead Webhook": {
+      "main": [
+        [
+          { "node": "Capture Start Time",      "type": "main", "index": 0 },
+          { "node": "Send Ack to Submitter",   "type": "main", "index": 0 },
+          { "node": "Build Team Notification", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Build Team Notification": {
+      "main": [
+        [{ "node": "Send Team Notification",    "type": "main", "index": 0 }]
+      ]
+    },
+    "Send Team Notification": {
+      "main": [
+        [{ "node": "Build Execution Telemetry", "type": "main", "index": 0 }]
+      ]
+    },
+    "Build Execution Telemetry": {
+      "main": [
+        [{ "node": "Soch Ops Telemetry",        "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": { "executionOrder": "v1" }
+}
