@@ -475,10 +475,17 @@
       </div>
       <div class="full"><label for="f-msg">Anything we should know?</label><textarea id="f-msg" placeholder="Your industry, your tools, what you want to change…"></textarea></div>
       <div class="full">
-        <button class="btn btn-primary btn-lg" type="submit">Request a callback</button>
-        <p class="form-note">Submitting opens a pre-filled email to Soch — nothing is stored on this page.</p>
+        <button class="btn btn-primary btn-lg" type="submit" id="leadform-btn">Request a callback</button>
+        <p class="form-note" id="leadform-note">We'll follow up within two business days.</p>
       </div>
     </form>
+    <div id="leadform-success" style="display:none;text-align:center;padding:3rem 0">
+      <div style="display:inline-block;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:2.5rem 3rem;max-width:28rem">
+        <p style="font-size:2rem;margin:0 0 1rem">&#10003;</p>
+        <h3 style="color:#fff;margin:0 0 0.75rem;font-size:1.25rem">We've got your enquiry.</h3>
+        <p style="color:rgba(255,255,255,0.65);margin:0;font-size:0.95rem;line-height:1.6">Check your inbox — a confirmation is on its way. We'll follow up within two business days.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -520,7 +527,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Soch. All rights reserved. · Research: NBER w31161 · St. Louis Fed (2025) · Harvard/BCG (2023)</p>
+      <p>© 2026 Soch. All rights reserved.</p>
     </div>
   </div>
 </footer>
@@ -548,10 +555,37 @@
   document.getElementById('leadform').addEventListener('submit',function(e){
     e.preventDefault();
     var v=function(id){return document.getElementById(id).value;};
-    var body='Name: '+v('f-name')+'\nEmail: '+v('f-email')+'\nCompany: '+v('f-company')+
-             '\nTeam size: '+v('f-size')+'\nProgram: '+v('f-track')+'\n\n'+v('f-msg');
-    window.location.href='mailto:hello@withsoch.com?subject='+
-      encodeURIComponent('AI Program enquiry — '+v('f-company'))+'&body='+encodeURIComponent(body);
+    var btn=document.getElementById('leadform-btn');
+    var note=document.getElementById('leadform-note');
+    btn.disabled=true;
+    btn.textContent='Sending…';
+    fetch('https://sochconsulting.app.n8n.cloud/webhook/academy-lead',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        name:v('f-name'),
+        email:v('f-email'),
+        company:v('f-company'),
+        teamSize:v('f-size'),
+        track:v('f-track'),
+        message:v('f-msg')
+      })
+    }).then(function(r){
+      if(r.ok||r.status===200){
+        document.getElementById('leadform').style.display='none';
+        document.getElementById('leadform-success').style.display='block';
+      } else {
+        btn.disabled=false;
+        btn.textContent='Request a callback';
+        note.textContent='Something went wrong — please email us at hello@withsoch.com.';
+        note.style.color='#ff5c35';
+      }
+    }).catch(function(){
+      btn.disabled=false;
+      btn.textContent='Request a callback';
+      note.textContent='Could not connect — please email us at hello@withsoch.com.';
+      note.style.color='#ff5c35';
+    });
   });
 })();
 </script>
