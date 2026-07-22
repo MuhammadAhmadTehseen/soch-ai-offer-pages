@@ -68,8 +68,8 @@
       <p>The foundation day happens on-site in Tallinn, before any industry-specific work: by the time we leave the building, every person has a working setup.</p>
       <ul>
         <li>Claude.ai Team accounts set up for every person</li>
-        <li>Gmail, Drive, Sheets &amp; Calendar connected</li>
-        <li>Your firm's n8n workspace stood up</li>
+        <li>Claude Projects configured with your firm's context</li>
+        <li>Claude Cowork installed and connected to your files</li>
         <li>Live demo on your firm's real work</li>
         <li>Data-handling walkthrough + AI use policy</li>
         <li>Next step agreed per person</li>
@@ -86,7 +86,7 @@
     </div>
 
     <div class="week-module fade-up" data-delay="1">
-      <span class="week-badge">WEEK 2 · DEPARTMENT BUILD LABS</span>
+      <span class="week-badge">WEEK 2 · DEPARTMENT SKILL LABS</span>
       <h3>Each team gets a Claude Project tuned to their work</h3>
       <p>The team splits by function — bookkeeping/ops first, then onboarding/KYC, then reporting. Each track configures a Claude Project with their firm's templates, chart of accounts, and standard email language. Labs run on your real (anonymised where needed) client files so the output can be judged against actual quality standards.</p>
       <div class="labs-grid">
@@ -100,14 +100,14 @@
         <p>AI assists; the accountant signs off. Claude can summarise ledger exceptions, flag reconciliation gaps, and draft the monthly report narrative — but it never posts entries, never certifies figures, and never produces a statutory output without a qualified accountant reviewing the numbers against source records. This rule is installed as firm policy in Week 2 and documented in the AI use policy.</p>
         <p style="margin-top:0.75rem;color:rgba(255,255,255,0.8)">Why this matters: Claude does not have access to your accounting software in real time, cannot guarantee numeric accuracy, and can state incorrect figures with confidence. Every workflow includes a human verification step for any number that will appear in a client-facing or regulatory document.</p>
       </div>
-      <div class="n8n-box" style="margin-top:1.25rem">
-        <div class="n8n-label"><span class="n8n-badge">n8n</span> Automations Soch delivers — your team owns</div>
-        <p>Soch arrives at Week 2 with these automations already built and tested. The labs teach your team how they work and how to modify them — no n8n expertise required:</p>
+      <div class="skill-box" style="margin-top:1.25rem">
+        <div class="skill-label"><span class="skill-badge">Skills + Cowork</span> What your teams build — and own</div>
+        <p>In the labs, each function builds reusable Claude Skills and Cowork workflows on its own client files. No coding required — a Skill is a plain-language file that captures how your firm wants the job done, and Cowork runs the multi-step version on your files:</p>
         <ul>
-          <li>Inbox watcher: client email attachment → extract fields → write to client sheet → flag exceptions to the accountant</li>
-          <li>Missing-documents chaser: gap detected in a client file → polite chase email drafted for one-click send</li>
-          <li>Recurring report generator: monthly figures → client-ready report draft in your template</li>
-          <li>New-client onboarding: intake form → folder structure, checklist and welcome sequence created automatically</li>
+          <li>Document intake: a folder of invoices and statements → fields extracted → client sheet updated, exceptions flagged for the accountant, run as one Cowork task</li>
+          <li>A missing-documents Skill that spots gaps in a client file and drafts the polite chase email for one-click send</li>
+          <li>A month-end reporting Skill that turns the period's figures into a client-ready report in your template — numbers verified by the accountant</li>
+          <li>An onboarding Skill that assembles the folder structure, KYC checklist and welcome sequence for a new client</li>
         </ul>
       </div>
     </div>
@@ -121,7 +121,7 @@
     <div class="week-module fade-up">
       <span class="week-badge">WEEK 4 · ROLLOUT &amp; DEMO DAY</span>
       <h3>Owned, measured, handed over</h3>
-      <p>Each function demos its working automation. Named owner per workflow, one metric each — minutes per client file, documents auto-processed per day, chase emails sent without human drafting. Handover pack includes the n8n workflows and the prompt library, documented in-house.</p>
+      <p>Each function demos what it built. Named owner per workflow, one metric each — minutes per client file, documents processed per day, chase emails sent without human drafting. Handover pack: prompts, Claude Projects, Skills, Cowork workflows and templates, documented in-house.</p>
     </div>
   </div>
 </section>
@@ -129,31 +129,27 @@
 <section class="bg-mist">
   <div class="container">
     <div class="section-head fade-up">
-      <span class="eyebrow">Community evidence</span>
-      <h2>What practitioners report — in their own words</h2>
-      <p class="lead mt-3" style="max-width:42rem">The exact workflows this curriculum teaches, reported by builders on Reddit with numbers attached:</p>
+      <span class="eyebrow">Evidence</span>
+      <h2>Proven in accounting — and built into Claude</h2>
+      <p class="lead mt-3" style="max-width:42rem">One published customer result, and the two Claude capabilities the labs are built on:</p>
     </div>
     <div class="grid-3 fade-up" data-delay="1" style="margin-top:2.5rem">
       <div class="reddit-card">
-        <span class="reddit-sub">r/n8n</span>
-        <blockquote>"The process takes less than 10 seconds per invoice, with an average cost of $0.00848 per invoice."</blockquote>
-        <p>An automated invoice-processing pipeline (n8n + Google Sheets + an LLM) that extracts key invoice details and populates a ledger sheet — the same pattern as our document-intake lab.</p>
-        <a href="https://www.reddit.com/r/n8n/comments/1fqj48t/sharing_an_experience_of_automating_invoice/" target="_blank" rel="noopener">Read the thread &rarr;</a>
+        <span class="reddit-sub">claude.com · Campfire</span>
+        <blockquote>"It helps us get more done with fewer headaches, and that's everything in today's 'do-more-with-less' world."</blockquote>
+        <p>Campfire runs its accounting on Claude and reports a <b>90% cut in bank-reconciliation time</b>, <b>50% less time on reporting</b>, and monthly close <b>three days faster</b> — the same document-and-narrative work this curriculum builds.</p>
+        <a href="https://claude.com/customers/campfire" target="_blank" rel="noopener">Read the case study &rarr;</a>
       </div>
       <div class="reddit-card">
-        <span class="reddit-sub">r/n8n</span>
-        <blockquote>"I was trying to extract text from PDFs using the built-in module, but the results were only around 70% accurate. Tables were messed up… [with an LLM-based extractor] way better."</blockquote>
-        <p>One of the most-upvoted posts on r/n8n (160+): LLM-based document extraction beating traditional PDF parsing on tables and long documents — the technique behind our intake workflow.</p>
-        <a href="https://www.reddit.com/r/n8n/comments/1k5wxig/i_found_a_way_to_extract_pdf_content_with_100/" target="_blank" rel="noopener">Read the thread &rarr;</a>
+        <span class="reddit-sub">Claude ecosystem · Skills</span>
+        <p>Claude ships prebuilt <b>Skills</b> for Excel, Word and PDF work — and your team writes its own, a plain-language file capturing your chart of accounts, templates and house email language. Claude then does the job your firm's way, every time, with no coding.</p>
       </div>
       <div class="reddit-card">
-        <span class="reddit-sub">r/n8n</span>
-        <blockquote>"I am currently building a data migration tool for an accounting firm… from Loyverse (point of sale) to QuickBooks, all in real-time. n8n is so convenient for this use case."</blockquote>
-        <p>A practitioner wiring an accounting firm's systems together with n8n — the same tool your team learns to drive in the labs.</p>
-        <a href="https://www.reddit.com/r/n8n/comments/1g5udlo/n8n_is_the_perfect_tool_for_this_use_case/" target="_blank" rel="noopener">Read the thread &rarr;</a>
+        <span class="reddit-sub">Claude ecosystem · Cowork</span>
+        <p>Point <b>Claude Cowork</b> at a folder of client invoices, receipts and statements and it works through them end to end — reading, extracting and drafting the ledger update — while the accountant reviews and posts. Delegated work, not another chat window.</p>
       </div>
     </div>
-    <p class="disclaimer">Public posts by accountants and automation builders on Reddit, quoted as community evidence — not Soch clients, not Soch results. Tallinn cohort case studies will follow once firms complete the programme.</p>
+    <p class="disclaimer">The Campfire figures are Anthropic's published customer results, not Soch results. Tallinn cohort case studies will follow once firms complete the programme.</p>
     <div class="conf-note fade-up"><b>The first question, answered:</b> Client data never leaves your firm: extraction and drafting run inside your own Google Workspace and your own Claude accounts, and AML/GDPR handling is part of the Module 1 data walkthrough.</div>
   </div>
 </section>

@@ -657,15 +657,15 @@ section { padding: 5rem 0; }
 .lab-card b { font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--ink); display: block; margin-bottom: 0.4rem; }
 .lab-card p  { font-size: 0.88rem; color: var(--slate); }
 
-/* ── n8n box ────────────────────────────────────────────── */
-.n8n-box {
+/* ── skill box ──────────────────────────────────────────── */
+.skill-box {
   margin-top: 1.25rem;
   background: var(--cream);
   border: 1px solid var(--line);
   border-radius: 0.75rem;
   padding: 1.5rem;
 }
-.n8n-box .n8n-label {
+.skill-box .skill-label {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 0.9rem;
@@ -675,7 +675,7 @@ section { padding: 5rem 0; }
   align-items: center;
   gap: 0.5rem;
 }
-.n8n-badge {
+.skill-badge {
   background: var(--charcoal);
   color: #fff;
   font-size: 0.72rem;
@@ -683,15 +683,15 @@ section { padding: 5rem 0; }
   border-radius: 5px;
   padding: 0.2rem 0.5rem;
 }
-.n8n-box > p { font-size: 0.9rem; color: var(--slate); margin-bottom: 0.75rem; }
-.n8n-box ul { list-style: none; }
-.n8n-box li {
+.skill-box > p { font-size: 0.9rem; color: var(--slate); margin-bottom: 0.75rem; }
+.skill-box ul { list-style: none; }
+.skill-box li {
   padding: 0.4rem 0 0.4rem 1.6rem;
   position: relative;
   font-size: 0.9rem;
   color: var(--slate);
 }
-.n8n-box li::before {
+.skill-box li::before {
   content: '';
   position: absolute;
   left: 0.1rem;
